@@ -46,6 +46,15 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
+      {% if user.is_authenticated %}
+      <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger m-2" type="submit">Logout</button>
+      </form>
+      {% else %}  
+      <a class="btn btn-success m-2" href="{% url 'login' %}">Login</a>
+      <a class="btn btn-primary m-2" href="{% url 'register' %}">Register</a>
+      {%endif%}
     </div>
   </div>
 </nav>
